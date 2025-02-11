@@ -3,50 +3,599 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Freelancing - My Website</title>
-  <link rel="stylesheet" href="freelancing.css" />
+  <title>Lightembold - Freelance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* CSS Variables & Global Styles */
+    :root {
+      --primary: #2c3e50;
+      --secondary: #e74c3c;
+      --accent: #3498db;
+      --background: #ecf0f1;
+      --text: #2c3e50;
+      --card-bg: #ffffff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Montserrat", sans-serif;
+    }
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .header .logo {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .header .logo img {
+      width: 80px;
+      height: auto;
+    }
+    .header h1 {
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+    .header .cta-btn {
+      background: var(--secondary);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+    .header .cta-btn:hover {
+      background: #c0392b;
+    }
+    /* About Us/Introduction */
+    .about {
+      background: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .about h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    .about p {
+      max-width: 800px;
+      margin: 0.5rem auto;
+      font-size: 1rem;
+    }
+    .core-competencies {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .core-competencies li {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    /* Services Offered */
+    .services {
+      background: var(--background);
+      padding: 2rem 1rem;
+    }
+    .services h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    .service-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    /* Portfolio/Case Studies */
+    .portfolio {
+      background: #fff;
+      padding: 2rem 1rem;
+    }
+    .portfolio h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .portfolio-item {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+    }
+    .portfolio-item .content {
+      padding: 1rem;
+    }
+    .portfolio-item .content h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .portfolio-item .content p {
+      font-size: 0.9rem;
+    }
+    .testimonials {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .testimonials blockquote {
+      font-style: italic;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+    .testimonials footer {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+    /* Process/How We Work */
+    .process {
+      background: var(--background);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .process h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .process-steps {
+      list-style: decimal;
+      max-width: 600px;
+      margin: 1rem auto;
+      text-align: left;
+      padding-left: 1.5rem;
+      font-size: 1rem;
+    }
+    .process-steps li {
+      margin-bottom: 0.75rem;
+    }
+    /* Call-to-Action (Contact Form) */
+    .cta-section {
+      background: linear-gradient(45deg, var(--accent) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 1rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background: var(--secondary);
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: #c0392b;
+    }
+    .contact-details {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    .contact-details a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    /* Why Choose Lightembold */
+    .why-choose {
+      background: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .why-choose h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .usp-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .usp-list li {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    /* Expertise/Specialization */
+    .expertise {
+      background: var(--background);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .expertise h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .expertise ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .expertise ul li {
+      background: var(--secondary);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    /* Social Proof/Partnerships */
+    .social-proof {
+      background: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .social-proof h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .client-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .client-logos img {
+      max-width: 100px;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    .client-logos img:hover {
+      opacity: 1;
+    }
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-section h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      position: relative;
+    }
+    .footer-section h3::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -5px;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    .social-links a:hover {
+      transform: translateY(-3px);
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .newsletter-form input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .newsletter-form button {
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .newsletter-form button:hover {
+      background: #c0392b;
+    }
+    .copyright {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
 </head>
 <body>
-  <!-- Header Component Placeholder -->
-  <div id="header"></div>
-
-  <!-- Main Content -->
-  <main>
-    <h1>Freelancing Section</h1>
-    <p>Welcome to the Freelancing section! Find resources, tips, and opportunities for independent work.</p>
-    <div class="freelancing-content">
-      <p>Learn about the latest freelancing trends, best practices, and discover tools to help you succeed.</p>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="https://via.placeholder.com/80" alt="Lightembold Logo" />
+      </div>
+      <h1>Lightembold: Illuminating Brands Through Creative Design & Development</h1>
+      <a href="#contact" class="cta-btn">Get a Quote</a>
     </div>
-  </main>
+  </header>
 
-  <!-- Footer Component Placeholder -->
-  <div id="footer"></div>
+  <!-- About Us/Introduction -->
+  <section class="about container" id="about">
+    <h2>About Us</h2>
+    <p>
+      Lightembold is a creative agency dedicated to elevating brands through innovative design and development.
+      Our mission is to transform your vision into reality by blending creativity, technology, and strategic insight.
+      We value transparency, collaboration, and excellence, which set us apart in a competitive market.
+    </p>
+    <p>
+      <strong>Our Core Competencies:</strong>
+    </p>
+    <ul class="core-competencies">
+      <li>Web Design</li>
+      <li>Brand Identity</li>
+      <li>Digital Marketing</li>
+    </ul>
+  </section>
 
-  <!-- JavaScript to load header and footer components -->
-  <script>
-    /**
-     * Loads an external HTML component and inserts it into the specified element.
-     *
-     * @param {string} elementId - The id of the element where the component should be loaded.
-     * @param {string} url - The path to the HTML component.
-     */
-    function loadComponent(elementId, url) {
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById(elementId).innerHTML = data;
-        })
-        .catch(error => console.error('Error loading component:', error));
-    }
-    
-    // Adjust the paths since this file is in the freelancing folder
-    loadComponent('header', '../components/header.html');
-    loadComponent('footer', '../components/footer.html');
-  </script>
+  <!-- Services Offered -->
+  <section class="services container" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Web Design</h3>
+        <p>Responsive and user-friendly websites tailored to your business goals.</p>
+        <p><strong>Deliverables:</strong> 3 design concepts, unlimited revisions, final files.</p>
+      </div>
+      <div class="service-card">
+        <h3>Brand Identity</h3>
+        <p>Crafting impactful brand strategies and visual identities that resonate with your audience.</p>
+        <p><strong>Deliverables:</strong> Logo design, color palette, typography, brand guidelines.</p>
+      </div>
+      <div class="service-card">
+        <h3>Digital Marketing</h3>
+        <p>Driving targeted traffic and increasing online visibility through strategic campaigns.</p>
+        <p><strong>Deliverables:</strong> SEO, social media marketing, and PPC management.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio/Case Studies -->
+  <section class="portfolio container" id="portfolio">
+    <h2>Our Work</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Project 1" />
+        <div class="content">
+          <h3>Project Title 1</h3>
+          <p>Case study: Transforming a brand through innovative design and effective development.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Project 2" />
+        <div class="content">
+          <h3>Project Title 2</h3>
+          <p>Case study: Enhancing online presence and driving conversions with a custom website.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200" alt="Project 3" />
+        <div class="content">
+          <h3>Project Title 3</h3>
+          <p>Case study: Building a cohesive brand identity that stands out in a competitive market.</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials">
+      <h3>Client Testimonials</h3>
+      <blockquote>
+        "Lightembold exceeded our expectations with their creative approach and exceptional execution."
+        <footer>- Satisfied Client</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Process/How We Work -->
+  <section class="process container" id="process">
+    <h2>How We Work</h2>
+    <ol class="process-steps">
+      <li><strong>Initial Consultation:</strong> Discuss your project goals and requirements.</li>
+      <li><strong>Proposal & Agreement:</strong> Receive a detailed proposal and contract.</li>
+      <li><strong>Project Kickoff:</strong> Begin with a clear timeline and milestones.</li>
+      <li><strong>Development & Design:</strong> Experience a collaborative process with regular updates.</li>
+      <li><strong>Launch & Support:</strong> Launch your project and receive ongoing support.</li>
+    </ol>
+    <p><strong>General Timeline:</strong> Projects typically range from 4 to 8 weeks based on complexity.</p>
+  </section>
+
+  <!-- Call-to-Action (Contact Form) -->
+  <section class="cta-section container" id="contact">
+    <h2>Contact Us</h2>
+    <p>Ready to transform your brand? Get in touch for a free consultation or to request a quote.</p>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="text" placeholder="Company Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <input type="tel" placeholder="Your Phone" required />
+      <textarea placeholder="Project Details" rows="4" required></textarea>
+      <button type="submit" class="cta-btn">Submit</button>
+    </form>
+    <p class="contact-details">
+      Or email us at <a href="mailto:info@lightembold.com">info@lightembold.com</a> or call <strong>+1 (555) 123-4567</strong>
+    </p>
+  </section>
+
+  <!-- Why Choose Lightembold -->
+  <section class="why-choose container" id="why-choose">
+    <h2>Why Choose Lightembold?</h2>
+    <ul class="usp-list">
+      <li>Data-Driven Approach</li>
+      <li>Collaborative Partnership</li>
+      <li>Focus on Results</li>
+      <li>Award-Winning Designs</li>
+    </ul>
+  </section>
+
+  <!-- Expertise/Specialization -->
+  <section class="expertise container" id="expertise">
+    <h2>Our Expertise</h2>
+    <ul>
+      <li>WordPress</li>
+      <li>React</li>
+      <li>Adobe Creative Suite</li>
+      <li>SEO & Digital Analytics</li>
+    </ul>
+  </section>
+
+  <!-- Social Proof/Partnerships -->
+  <section class="social-proof container" id="social-proof">
+    <h2>Our Clients & Partners</h2>
+    <div class="client-logos">
+      <img src="https://via.placeholder.com/100x50" alt="Client 1" />
+      <img src="https://via.placeholder.com/100x50" alt="Client 2" />
+      <img src="https://via.placeholder.com/100x50" alt="Client 3" />
+      <img src="https://via.placeholder.com/100x50" alt="Client 4" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your Email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Lightembold. All rights reserved. | <a href="#" style="color: #fff; text-decoration: underline;">Privacy Policy</a></p>
+    </div>
+  </footer>
 </body>
 </html>

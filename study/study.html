@@ -3,50 +3,593 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Study - My Website</title>
-  <link rel="stylesheet" href="study.css" />
-</head>
-<body>
-  <!-- Header Component Placeholder -->
-  <div id="header"></div>
-
-  <!-- Main Content -->
-  <main>
-    <h1>Study Section</h1>
-    <p>Welcome to the Study section! Find tips, resources, and guides to boost your academic success.</p>
-    <div class="study-content">
-      <p>Explore study techniques, learning strategies, and essential resources curated just for you.</p>
-    </div>
-  </main>
-
-  <!-- Footer Component Placeholder -->
-  <div id="footer"></div>
-
-  <!-- JavaScript to load header and footer components -->
-  <script>
-    /**
-     * Loads an external HTML component and inserts it into the specified element.
-     *
-     * @param {string} elementId - The id of the element where the component should be loaded.
-     * @param {string} url - The path to the HTML component.
-     */
-    function loadComponent(elementId, url) {
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById(elementId).innerHTML = data;
-        })
-        .catch(error => console.error('Error loading component:', error));
+  <title>LightEmBold - Study</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    /* CSS Variables & Global Styles */
+    :root {
+      --primary: #2c3e50;
+      --secondary: #e74c3c;
+      --accent: #3498db;
+      --background: #ecf0f1;
+      --text: #2c3e50;
+      --card-bg: #ffffff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Montserrat", sans-serif;
+    }
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
     }
     
-    // Adjusting paths since we're one folder deep
-    loadComponent('header', '../components/header.html');
-    loadComponent('footer', '../components/footer.html');
+    /* Header & Navigation */
+    .header {
+      background: var(--primary);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      background: var(--secondary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .logo-text span {
+      color: var(--secondary);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-menu a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .nav-menu a {
+        padding: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 70px;
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Main Study Content */
+    .study-section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Course Organization */
+    .courses-category {
+      margin-bottom: 2rem;
+    }
+    .courses-category h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .course-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+    .course-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .course-card p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Course Content */
+    .content-types {
+      margin-bottom: 2rem;
+    }
+    .content-types h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .content-card {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .content-card i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    /* Progress Tracking */
+    .progress-tracking {
+      margin-bottom: 2rem;
+    }
+    .progress-tracking h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .progress-card {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .progress-card .progress-bar {
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .progress-card .progress-bar div {
+      background: var(--secondary);
+      height: 10px;
+      width: 60%; /* example progress */
+    }
+
+    /* Interactive Learning */
+    .interactive-learning {
+      margin-bottom: 2rem;
+    }
+    .interactive-learning h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .discussion-board {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .discussion-board p {
+      font-size: 0.9rem;
+    }
+
+    /* Resource Library */
+    .resource-library {
+      margin-bottom: 2rem;
+    }
+    .resource-library h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .resource-card {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-5px);
+    }
+    .resource-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    .resource-card a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Content Updates */
+    .content-updates {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(45deg, var(--accent) 0%, var(--secondary) 100%);
+      color: #fff;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: #fff;
+      padding: 4rem 2rem 2rem;
+      margin-top: 4rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+    .footer-section h3 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+    }
+    .footer-section h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    .contact-info li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="/" class="logo-container">
+        <div class="logo-img">L</div>
+        <div class="logo-text">Light<span>Em</span>Bold</div>
+      </a>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="./games.html">Games</a>
+        <a href="./study.html">Study</a>
+        <a href="./freelancing.html">Services</a>
+        <a href="./aboutus.html">About Us</a>
+        <a href="#join" class="join-btn">Join Now</a>
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Study Hub</h1>
+    <p>Your gateway to learning with organized courses and interactive content.</p>
+  </section>
+
+  <!-- Main Study Content -->
+  <main class="study-section">
+    <!-- Course Organization -->
+    <section class="courses-category">
+      <h2>Course Organization</h2>
+      <div class="courses-grid">
+        <div class="course-card">
+          <h3>Mathematics</h3>
+          <p>Explore algebra, calculus, and geometry with structured courses.</p>
+        </div>
+        <div class="course-card">
+          <h3>Science</h3>
+          <p>Dive into physics, chemistry, and biology with engaging lessons.</p>
+        </div>
+        <div class="course-card">
+          <h3>Language</h3>
+          <p>Enhance your language skills through comprehensive language courses.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content -->
+    <section class="content-types">
+      <h2>Course Content</h2>
+      <div class="content-grid">
+        <div class="content-card">
+          <i class="fas fa-video"></i>
+          <p>Videos</p>
+        </div>
+        <div class="content-card">
+          <i class="fas fa-file-alt"></i>
+          <p>Articles</p>
+        </div>
+        <div class="content-card">
+          <i class="fas fa-question-circle"></i>
+          <p>Quizzes</p>
+        </div>
+        <div class="content-card">
+          <i class="fas fa-sticky-note"></i>
+          <p>Flashcards</p>
+        </div>
+        <div class="content-card">
+          <i class="fas fa-file-download"></i>
+          <p>Past Papers</p>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 1rem;">
+        Downloadable resources available for offline access.
+      </p>
+    </section>
+
+    <!-- Progress Tracking -->
+    <section class="progress-tracking">
+      <h2>Progress Tracking</h2>
+      <div class="progress-card">
+        <h3>Algebra Basics</h3>
+        <p>Completed: 40% | Upcoming: 60%</p>
+        <div class="progress-bar">
+          <div style="width: 40%;"></div>
+        </div>
+      </div>
+      <div class="progress-card">
+        <h3>Introduction to Biology</h3>
+        <p>Completed: 70% | Upcoming: 30%</p>
+        <div class="progress-bar">
+          <div style="width: 70%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Learning -->
+    <section class="interactive-learning">
+      <h2>Interactive Learning</h2>
+      <div class="discussion-board">
+        <p>
+          <strong>Forum:</strong> Join the discussion on "Effective Study Techniques" and share your experiences with peers.
+        </p>
+      </div>
+    </section>
+
+    <!-- Resource Library -->
+    <section class="resource-library">
+      <h2>Resource Library</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <h3>Study Guide</h3>
+          <p>Comprehensive guide to acing your exams.</p>
+          <a href="#">Download PDF</a>
+        </div>
+        <div class="resource-card">
+          <h3>Podcast Series</h3>
+          <p>Listen to expert insights on effective learning.</p>
+          <a href="#">Listen Now</a>
+        </div>
+        <div class="resource-card">
+          <h3>Research Articles</h3>
+          <p>In-depth articles on latest trends in education.</p>
+          <a href="#">Read More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Updates -->
+    <section class="content-updates">
+      <h2>Content Updates</h2>
+      <p>
+        We regularly update our courses and resources to keep you ahead in your learning journey!
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About LightEmBold</h3>
+        <p>
+          LightEmBold is a vibrant community platform dedicated to bringing people together to share, learn, and grow.
+        </p>
+      </div>
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <div class="social-links">
+          <a href="https://twitter.com/lightembold" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://facebook.com/lightembold" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com/lightembold" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/company/lightembold" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-envelope"></i> lightembold@gmail.com</li>
+          <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Community Street, Digital City, DC 12345</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 LightEmBold. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Hamburger Menu -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      const spans = hamburger.getElementsByTagName("span");
+      spans[0].style.transform = navMenu.classList.contains("active")
+        ? "rotate(45deg) translate(6px, 6px)"
+        : "none";
+      spans[1].style.opacity = navMenu.classList.contains("active") ? "0" : "1";
+      spans[2].style.transform = navMenu.classList.contains("active")
+        ? "rotate(-45deg) translate(6px, -6px)"
+        : "none";
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove("active");
+        const spans = hamburger.getElementsByTagName("span");
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+      }
+    });
+
+    navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        const spans = hamburger.getElementsByTagName("span");
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+      });
+    });
   </script>
 </body>
 </html>

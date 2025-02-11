@@ -1,11 +1,11 @@
-/* Reset some default browser styles */
+/* Reset default browser styles */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   
-  /* Overall body styling with a black background and yellow text */
+  /* Overall styling for a black background with yellow text */
   body {
     background-color: #000;
     color: #FFD700;
@@ -19,8 +19,8 @@
     text-align: center;
   }
   
-  /* Tournament content section styling */
-  .tournament-content {
+  /* Freelancing content section styling */
+  .freelancing-content {
     margin-top: 2em;
     padding: 1em;
     border: 2px solid #FFD700;

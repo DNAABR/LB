@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study - My Website</title>
+  <link rel="stylesheet" href="study.css" />
+</head>
+<body>
+  <!-- Header Component Placeholder -->
+  <div id="header"></div>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Study Section</h1>
+    <p>Welcome to the Study section! Find tips, resources, and guides to boost your academic success.</p>
+    <div class="study-content">
+      <p>Explore study techniques, learning strategies, and essential resources curated just for you.</p>
+    </div>
+  </main>
+
+  <!-- Footer Component Placeholder -->
+  <div id="footer"></div>
+
+  <!-- JavaScript to load header and footer components -->
+  <script>
+    /**
+     * Loads an external HTML component and inserts it into the specified element.
+     *
+     * @param {string} elementId - The id of the element where the component should be loaded.
+     * @param {string} url - The path to the HTML component.
+     */
+    function loadComponent(elementId, url) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => console.error('Error loading component:', error));
+    }
+    
+    // Adjusting paths since we're one folder deep
+    loadComponent('header', '../components/header.html');
+    loadComponent('footer', '../components/footer.html');
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+/* Reset some default browser styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Overall body styling with a black background and yellow text */
+  body {
+    background-color: #000;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Main content styling */
+  main {
+    padding: 2em;
+    text-align: center;
+  }
+  
+  /* Study content section styling */
+  .study-content {
+    margin-top: 2em;
+    padding: 1em;
+    border: 2px solid #FFD700;
+    border-radius: 5px;
+  }
+  

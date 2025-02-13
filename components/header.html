@@ -3,105 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Website</title>
+    <title>LightEmBold - Header</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #E74C3C;
+            --accent: #3498DB;
+            --background: #ECF0F1;
+            --text: #2C3E50;
+            --card-bg: #FFFFFF;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Header Styles */
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--primary);
+            padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
+        .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2563eb;
+        .logo-container {
+            display: flex;
+            align-items: center;
             text-decoration: none;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: var(--secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
         }
 
         .nav-menu {
             display: flex;
             gap: 2rem;
-            list-style: none;
+            align-items: center;
         }
 
         .nav-menu a {
+            color: #fff;
             text-decoration: none;
-            color: #4b5563;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s ease;
+            position: relative;
         }
 
-        .nav-menu a:hover {
-            color: #2563eb;
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .hamburger {
             display: none;
+            flex-direction: column;
+            gap: 6px;
             cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+            padding: 10px;
         }
 
-        /* Main Content Styles */
-        main {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px - 200px);
-            padding: 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: #fff;
+            transition: all 0.3s ease;
         }
 
-    
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+        }
+
+
+        .join-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-btn:hover {
+            background-color: darken(var(--secondary), 10%);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="nav-container">
-            <a href="/" class="logo">Logo</a>
-            <ul class="nav-menu">
-                <li><a href="#games">Games</a></li>
-                <li><a href="#study">Study</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-            </ul>
-            <button class="hamburger">☰</button>
-        </nav>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <div class="logo-img">L</div>
+                <div class="logo-text">Light<span>Em</span>Bold</div>
+            </a>
+    
+            <nav class="nav-menu" id="nav-menu">
+                <a href="/games/games.html">Games</a>
+                <a href="/tournament/tournament.html">Tournaments</a>
+                <a href="/study/study.html">Study</a>
+                <a href="/freelancing/freelancing.html">Services</a>
+                <a href="/blogs/blogs.html">Blogs</a>
+                <a href="/aboutus/aboutus.html">About Us</a>
+                <a href="#join" class="join-btn">Join Now</a>
+            </nav>
+    
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </header>
-
-    <main>
-        <h1>Welcome to our website</h1>
-        <p>This is where your main content would go.</p>
-    </main>
-
     <script>
-        // Toggle mobile menu
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
 
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+
+            // Animate hamburger to X
+            const spans = hamburger.getElementsByTagName('span');
+            spans[0].style.transform = navMenu.classList.contains('active')
+                ? 'rotate(45deg) translate(6px, 6px)'
+                : 'none';
+            spans[1].style.opacity = navMenu.classList.contains('active')
+                ? '0'
+                : '1';
+            spans[2].style.transform = navMenu.classList.contains('active')
+                ? 'rotate(-45deg) translate(6px, -6px)'
+                : 'none';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                const spans = hamburger.getElementsByTagName('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const spans = hamburger.getElementsByTagName('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
         });
     </script>
 </body>

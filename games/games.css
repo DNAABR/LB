@@ -1,31 +1,83 @@
-/* Reset some default browser styles */
+
+/* CSS Variables and Global Styles */
+:root {
+    --primary: #2c3e50;
+    --secondary: #e74c3c;
+    --accent: #3498db;
+    --background: #ecf0f1;
+    --text: #2c3e50;
+    --card-bg: #ffffff;
+}
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  /* Body styling with a black background and yellow text */
-  body {
-    background-color: #000;
-    color: #FFD700;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+body {
+    background-color: var(--background);
+    color: var(--text);
     line-height: 1.6;
-  }
-  
-  /* Main content styling */
-  main {
-    padding: 2em;
+}
+
+/* Hero Section */
+.hero {
+    margin-top: 70px;
+    padding: 4rem 2rem;
     text-align: center;
-  }
-  
-  /* Gaming content section */
-  .gaming-content {
-    margin-top: 2em;
-    padding: 1em;
-    border: 2px solid #FFD700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: #fff;
+}
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* Search Section */
+.game-search {
+    padding: 2rem;
+    text-align: center;
+}
+.game-search input {
+    padding: 0.75rem;
+    width: 50%;
+    max-width: 400px;
+    border: 2px solid var(--primary);
     border-radius: 5px;
-  }
-  
-  /* Additional styling for header and footer if needed can be added in their own CSS files or here */
-  
+}
+
+/* Game Library */
+.game-library {
+    padding: 2rem;
+}
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.game-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.game-card:hover {
+    transform: translateY(-5px);
+}
+.game-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+.game-card p {
+    margin-bottom: 1rem;
+}
+.ratings i {
+    margin-right: 0.2rem;
+    color: var(--secondary);
+}

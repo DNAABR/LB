@@ -1,173 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lightembold - Freelance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="services.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - LightEmBold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="services.css">
 </head>
 <body>
-  <!-- Include Header -->
-  <div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
 
-  <!-- Main Content -->
-  <!-- About Us/Introduction -->
-  <section class="about container" id="about">
-    <h2>About Us</h2>
-    <p>
-      Lightembold is a creative agency dedicated to elevating brands through innovative design and development.
-      Our mission is to transform your vision into reality by blending creativity, technology, and strategic insight.
-      We value transparency, collaboration, and excellence, which set us apart in a competitive market.
-    </p>
-    <p>
-      <strong>Our Core Competencies:</strong>
-    </p>
-    <ul class="core-competencies">
-      <li>Web Design</li>
-      <li>Brand Identity</li>
-      <li>Digital Marketing</li>
-    </ul>
-  </section>
+    <section class="hero">
+        <h1>Our Services</h1>
+        <p>Discover how we can support your goals.</p>
+    </section>
 
-  <!-- Services Offered -->
-  <section class="services container" id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Web Design</h3>
-        <p>Responsive and user-friendly websites tailored to your business goals.</p>
-        <p><strong>Deliverables:</strong> 3 design concepts, unlimited revisions, final files.</p>
-      </div>
-      <div class="service-card">
-        <h3>Brand Identity</h3>
-        <p>Crafting impactful brand strategies and visual identities that resonate with your audience.</p>
-        <p><strong>Deliverables:</strong> Logo design, color palette, typography, brand guidelines.</p>
-      </div>
-      <div class="service-card">
-        <h3>Digital Marketing</h3>
-        <p>Driving targeted traffic and increasing online visibility through strategic campaigns.</p>
-        <p><strong>Deliverables:</strong> SEO, social media marketing, and PPC management.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio/Case Studies -->
-  <section class="portfolio container" id="portfolio">
-    <h2>Our Work</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300x200" alt="Project 1" />
-        <div class="content">
-          <h3>Project Title 1</h3>
-          <p>Case study: Transforming a brand through innovative design and effective development.</p>
+    <section class="services">
+        <div class="services-grid">
+            <div class="service-card" onclick="window.location.href='#service1'" role="link" tabindex="0">
+                <h3>Service One</h3>
+                <p>Brief details about service one.</p>
+            </div>
+            <div class="service-card" onclick="window.location.href='#service2'" role="link" tabindex="0">
+                <h3>Service Two</h3>
+                <p>Brief details about service two.</p>
+            </div>
+            <div class="service-card" onclick="window.location.href='#service3'" role="link" tabindex="0">
+                <h3>Service Three</h3>
+                <p>Brief details about service three.</p>
+            </div>
         </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300x200" alt="Project 2" />
-        <div class="content">
-          <h3>Project Title 2</h3>
-          <p>Case study: Enhancing online presence and driving conversions with a custom website.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://via.placeholder.com/300x200" alt="Project 3" />
-        <div class="content">
-          <h3>Project Title 3</h3>
-          <p>Case study: Building a cohesive brand identity that stands out in a competitive market.</p>
-        </div>
-      </div>
-    </div>
-    <div class="testimonials">
-      <h3>Client Testimonials</h3>
-      <blockquote>
-        "Lightembold exceeded our expectations with their creative approach and exceptional execution."
-        <footer>- Satisfied Client</footer>
-      </blockquote>
-    </div>
-  </section>
+    </section>
 
-  <!-- Process/How We Work -->
-  <section class="process container" id="process">
-    <h2>How We Work</h2>
-    <ol class="process-steps">
-      <li><strong>Initial Consultation:</strong> Discuss your project goals and requirements.</li>
-      <li><strong>Proposal & Agreement:</strong> Receive a detailed proposal and contract.</li>
-      <li><strong>Project Kickoff:</strong> Begin with a clear timeline and milestones.</li>
-      <li><strong>Development & Design:</strong> Experience a collaborative process with regular updates.</li>
-      <li><strong>Launch & Support:</strong> Launch your project and receive ongoing support.</li>
-    </ol>
-    <p><strong>General Timeline:</strong> Projects typically range from 4 to 8 weeks based on complexity.</p>
-  </section>
+    <section class="cta-section">
+        <h2>Need More Info?</h2>
+        <p>Contact us to learn more details about each service.</p>
+        <a href="#contact" class="join-btn">Contact Us</a>
+    </section>
 
-  <!-- Call-to-Action (Contact Form) -->
-  <section class="cta-section container" id="contact">
-    <h2>Contact Us</h2>
-    <p>Ready to transform your brand? Get in touch for a free consultation or to request a quote.</p>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="text" placeholder="Company Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <input type="tel" placeholder="Your Phone" required />
-      <textarea placeholder="Project Details" rows="4" required></textarea>
-      <button type="submit" class="cta-btn">Submit</button>
-    </form>
-    <p class="contact-details">
-      Or email us at <a href="mailto:info@lightembold.com">info@lightembold.com</a> or call <strong>+1 (555) 123-4567</strong>
-    </p>
-  </section>
+    <div id="footer-placeholder"></div>
 
-  <!-- Why Choose Lightembold -->
-  <section class="why-choose container" id="why-choose">
-    <h2>Why Choose Lightembold?</h2>
-    <ul class="usp-list">
-      <li>Data-Driven Approach</li>
-      <li>Collaborative Partnership</li>
-      <li>Focus on Results</li>
-      <li>Award-Winning Designs</li>
-    </ul>
-  </section>
-
-  <!-- Expertise/Specialization -->
-  <section class="expertise container" id="expertise">
-    <h2>Our Expertise</h2>
-    <ul>
-      <li>WordPress</li>
-      <li>React</li>
-      <li>Adobe Creative Suite</li>
-      <li>SEO & Digital Analytics</li>
-    </ul>
-  </section>
-
-  <!-- Social Proof/Partnerships -->
-  <section class="social-proof container" id="social-proof">
-    <h2>Our Clients & Partners</h2>
-    <div class="client-logos">
-      <img src="https://via.placeholder.com/100x50" alt="Client 1" />
-      <img src="https://via.placeholder.com/100x50" alt="Client 2" />
-      <img src="https://via.placeholder.com/100x50" alt="Client 3" />
-      <img src="https://via.placeholder.com/100x50" alt="Client 4" />
-    </div>
-  </section>
-
-  <!-- Include Footer -->
-  <div id="footer-placeholder"></div>
-
-  <script>
-    // Load header
-    fetch('/components/header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
-
-    // Load footer
-    fetch('/components/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
-  </script>
+    <script src="../scripts.js"></script>
+    <script>
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => { document.getElementById('header-placeholder').innerHTML = data; });
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
+    </script>
 </body>
 </html>
